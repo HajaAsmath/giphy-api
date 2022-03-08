@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    
+</head>
+<body>
+    <img id='cats' src=''/>
+    <script>
+        const img = document.querySelector('#cats');
+
+        async function getCats() {
+            try {
+                const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=SAujNPQuJJ03UuiIhJwVu0pV7JkKWFn&s=cats');
+                if(response.ok) {
+                        const result = await response.json();
+                        img.src = result.data.images.original.url;
+                } else {
+                    console.log(response.status);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getCats();
+    </script>
+</body>
